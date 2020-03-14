@@ -1,6 +1,6 @@
 # coding: utf-8
 
-from hudong_class import HudongItem
+from school_class import SchoolItem
 from pyfasttext import FastText
 from functools import cmp_to_key
 from math import log
@@ -19,7 +19,7 @@ class Node:
 
 class Classifier:
 	model = None
-	labeled_hudongList = None
+	labeled_SchoolList = None
 	mean = None    #各分量的均值
 	var = None   #各分量的方差
 	title_simi = None
@@ -36,21 +36,21 @@ class Classifier:
 	# 相似度权值，分别为：title，openTypeList，baseInfoKeyList，baseInfoValueList，detail
 	weight = [0.2,0.2,0.2,0.2,0.2]  
 	# knn的k值
-	k = 10 
+	k = 5 
 	
 	
 	def __init__(self,model_path): # 传入模型路径
 		self.model = FastText(model_path)			
 		print('classifier load over...')
 		
-	def load_trainSet(self,HudongList):  # 传入已经标注过的hudongItem列表
-		self.labeled_hudongList = HudongList
+	def load_trainSet(self,SchoolList):  # 传入已经标注过的SchoolItem列表
+		self.labeled_SchoolList = SchoolList
 		self.openTypeList_IDF = {}
 		self.baseInfoKeyList_IDF = {}
 		self.openTypeList_num = 0
 		self.baseInfoKeyList_num = 0
 		# 统计各个开放类别和属性的 IDF值
-		for p in self.labeled_hudongList:
+		for p in self.labeled_SchoolList:
 			if len(p.openTypeList) > 0:
 				self.openTypeList_num += 1
 			for t in p.openTypeList:
@@ -212,7 +212,7 @@ class Classifier:
 		baseInfoValueList_simi = []
 		
 		i = 0
-		for p in self.labeled_hudongList:  # 预先计算存储各分量相似度
+		for p in self.labeled_SchoolList:  # 预先计算存储各分量相似度
 			if p.title == item.title:	# 如果训练集已经有，直接返回label
 				return p.label
 			title_simi.append(self.get_title_simi(p, item))
@@ -234,9 +234,9 @@ class Classifier:
 			i += 1
 		
 		for i in range(4):
-			mean[i] /= len(self.labeled_hudongList)
+			mean[i] /= len(self.labeled_SchoolList)
 		
-		for p in self.labeled_hudongList: # 计算方差
+		for p in self.labeled_SchoolList: # 计算方差
 			var[0] += (title_simi[i]-mean[0])*(title_simi[i]-mean[0])
 			var[1] += (openTypeList_simi[i]-mean[1])*(openTypeList_simi[i]-mean[1])
 			var[2] += (baseInfoKeyList_simi[i]-mean[2])*(baseInfoKeyList_simi[i]-mean[2])
@@ -252,7 +252,7 @@ class Classifier:
 		# 对于没有openTypeList的 ，赋予平均值
 		# 对title和openTypeList进行高斯归一，对后面两项进行maxmin归一
 		i = 0	
-		for p in self.labeled_hudongList:
+		for p in self.labeled_SchoolList:
 			title_simi[i] = (title_simi[i]-mean[0])/stand[0]
 			   
 			if openTypeList_simi[i] == 0.0: #对于没有出现的，赋予平均值
@@ -269,7 +269,7 @@ class Classifier:
 			
 		i = 0
 		count = 0
-		for p in self.labeled_hudongList: # 计算各项相似度的加权和
+		for p in self.labeled_SchoolList: # 计算各项相似度的加权和
 			s = self.weight[0]*title_simi[i] + self.weight[1]*openTypeList_simi[i] + self.weight[2]*baseInfoKeyList_simi[i] + self.weight[3]*baseInfoValueList_simi[i]
 			count += 1
 			if count < 2:
@@ -282,7 +282,7 @@ class Classifier:
 		
 		curList.sort(key=lambda obj:obj.simi,reverse=True)  # 将训练集按照相对item的相似度进行排序
 		
-		count = [0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.]	
+		count = [0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.]	
 		for i in range(self.k):
 			label = int(curList[i].label)
 			count[label] += curList[i].simi
@@ -291,7 +291,7 @@ class Classifier:
 		
 		maxx = -233
 		answer = 0
-		for i in range(17):
+		for i in range(10):
 			if count[i] > maxx:
 				maxx = count[i]
 				answer = i

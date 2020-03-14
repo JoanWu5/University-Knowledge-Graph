@@ -5,7 +5,7 @@ import sys
 import codecs
 import os
 
-os.chdir(r'E:\assignment\Thesis\985Knowledge-Graph\SchoolCrawler\SchoolCrawler\spiders')
+os.chdir(r'E:\assignment\Thesis\University-Knowledge-Graph\SchoolCrawler\SchoolCrawler\spiders')
 
 import csv
 import json
