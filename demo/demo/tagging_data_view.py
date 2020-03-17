@@ -15,7 +15,7 @@ def showtagging_data(request):
 		# 连接数据库
 		db = neo_con
 		title = request.GET['title']
-		answer = db.matchHudongItembyTitle(title)
+		answer = db.matchSchoolItembyTitle(title)
 		if answer == None:
 			ctx['title'] = '<h1> 该url不存在，别乱搞！ </h1>'
 			return render(request, "tagging_data.html", ctx)

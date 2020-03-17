@@ -40,30 +40,16 @@ def get_explain(s):
 	if s == 3:
 		return r'机构'
 	if s == 4:
-		return '政治经济名词'
+		return '网站'
 	if s == 5:
-		return '动物学名词'
+		return '奖项'
 	if s == 6:
-		return '植物学名词'
+		return '系，专业'
 	if s == 7:
-		return '化学名词'	
+		return '通知公告'	
 	if s == 8:
-		return '季节气候'
+		return '活动比赛'	
 	if s == 9:
-		return '动植物产品'
-	if s == 10:
-		return '动植物疾病'
-	if s == 11:
-		return '自然灾害'
-	if s == 12:
-		return '营养成分'
-	if s == 13:
-		return '生物学名词'
-	if s == 14:
-		return '农机具'
-	if s == 15:
-		return '农业技术术语'	
-	if s == 16:
 		return '其它实体'	
 	
 	if s == 'np':
@@ -94,31 +80,17 @@ def get_detail_explain(s):
 	if s == 3:
 		return '包括机构名，会议名，期刊名等'
 	if s == 4:
-		return '包括政府政策，政治术语，经济学术语'
+		return '包括与大学相关的网址，网站，BBS，贴吧等'
 	if s == 5:
-		return '包括动物名称，动物类别，动物学相关术语'
+		return '包括与大学相关的各种奖项'
 	if s == 6:
-		return '包括植物名称，植物类别，植物学相关术语'
+		return '包括系和专业'
 	if s == 7:
-		return '包括化肥，农药，杀菌剂，其它化学品，以及一些化学术语'	
+		return '包括各种通知公告，规定，安排'	
 	if s == 8:
-		return '包括天气气候，季节，节气'
+		return '包括活动与比赛'
 	if s == 9:
-		return '包括肉制品，蔬菜制品，水果制品，豆制品等以动植物为原料的食品，以及一些非食物制品'
-	if s == 10:
-		return '包括传染病，原发性疾病，遗传病等'
-	if s == 11:
-		return '包括一些大型灾害，环境污染，或其它造成经济损失的自然现象'
-	if s == 12:
-		return '包括脂肪，矿物质，维生素，碳水化合物，无机盐等'
-	if s == 13:
-		return '包括人体部位，组织器官，基因相关，微生物，以及一些生物学术语'
-	if s == 14:
-		return '包括用于农业生产的自动化机械，手工工具'
-	if s == 15:
-		return '包括农学名词，农业技术措施'	
-	if s == 16:
-		return '与农业领域没有特别直接的关系，但是也是实体'	
+		return '与大学没有特别直接的关系，但是也是实体'	
 		
 	
 	if s == 'np':
@@ -167,13 +139,13 @@ def get_NE(text):
 		p12 = p1 + TagList[i+1][0]
 		
 		# 不但需要txt中有实体，还需要判断数据库中有没有
-		flag = db.matchHudongItembyTitle(p12) 
+		flag = db.matchSchoolItembyTitle(p12) 
 		if p12 in label and flag != None and preok(t1) and nowok(t2):  # 组合2个词如果得到实体
 			answerList.append([p12,label[p12]])
 			i += 2
 			continue
 		
-		flag = db.matchHudongItembyTitle(p1)
+		flag = db.matchSchoolItembyTitle(p1)
 		if p1 in label and flag != None and nowok(t1):	 # 当前词如果是实体
 			answerList.append([p1,label[p1]])
 			i += 1
@@ -191,4 +163,4 @@ def get_NE(text):
 		
 	
 # from toolkit.pre_load import pre_load_thu,neo_con
-# print(get_NE(pre_load_thu, neo_con, '美利坚大香蕉习近平的橘子 hhhhhh'))
+# print(get_NE(pre_load_thu, neo_con, '北京大学清华大学计算机科学与技术系'))

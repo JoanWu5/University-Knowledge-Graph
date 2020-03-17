@@ -19,7 +19,7 @@ print('neo4j connected!')
 
 predict_labels = {}   # 预加载实体到标注的映射字典
 filePath = os.getcwd()
-with open(filePath+'/toolkit/predict_labels.txt','r',encoding="utf-8") as csvfile:
+with open(filePath+'/toolkit/predict_labels_accurate.txt','r',encoding="utf-8") as csvfile:
 	reader = csv.reader(csvfile, delimiter=' ')
 	for row in reader:
 		predict_labels[str(row[0])] = int(row[1])
@@ -30,12 +30,12 @@ wv_model = word_vector_model()
 #wv_model.read_vec('toolkit/vector_5.txt') # 测试用，节约读取时间
 #wv_model.read_vec('toolkit/vector.txt')
 
-wv_model.read_vec(filePath+'/toolkit/vector_15.txt') # 降到15维了	   
+wv_model.read_vec(filePath+'/toolkit/vector_15_1.txt') # 降到15维了	   
 
 # 读取农业层次树
 tree = TREE()
-tree.read_edge(filePath+'/toolkit/micropedia_tree.txt')
-tree.read_leaf(filePath+'/toolkit/leaf_list.txt')
+tree.read_edge(filePath+'/toolkit/micropedia_tree1.txt')
+tree.read_leaf(filePath+'/toolkit/leaf_list1.txt')
 		
 print('level tree load over~~~')
 

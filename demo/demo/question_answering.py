@@ -6,9 +6,9 @@ import random
 import re
 city_list = []
 
-with open('label_data/city_list.txt','r',encoding='utf8') as fr:
-	for city in fr.readlines():
-		city_list.append(city.strip())
+# with open('label_data/city_list.txt','r',encoding='utf8') as fr:
+# 	for city in fr.readlines():
+# 		city_list.append(city.strip())
 
 
 thu_lac = pre_load_thu

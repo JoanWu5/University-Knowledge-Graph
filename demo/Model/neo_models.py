@@ -15,8 +15,8 @@ class Neo4j():
 		return answer
 
 	# 根据title值返回互动百科item
-	def matchHudongItembyTitle(self,value):
-		sql = "MATCH (n:HudongItem { title: '" + str(value) + "' }) return n;"
+	def matchSchoolItembyTitle(self,value):
+		sql = "MATCH (n:SchoolItem { title: '" + str(value) + "' }) return n;"
 		try:
 			answer = self.graph.run(sql).data()
 		except:

@@ -17,7 +17,7 @@ def showdetail(request):
 		db = neo_con
 		
 		title = request.GET['title']
-		answer = db.matchHudongItembyTitle(title)
+		answer = db.matchSchoolItembyTitle(title)
 		if answer == None:
 			return render(request, "404.html", ctx) 
 
@@ -99,7 +99,7 @@ def showdetail(request):
 				
 			agri_type += '</p>'	
 		if len(ansList) == 0:
-			agri_type = '<p > 暂无农业类型</p>'
+			agri_type = '<p > 暂无高校类型</p>'
 		ctx['agri_type'] = agri_type	
 		
 		entity_type = ""
