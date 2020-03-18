@@ -14,7 +14,7 @@ def getHtml(url):
 	
 def dfs(u_str):
 	print('entry: '+u_str)
-	with open('treenode_list1.txt','a',encoding= 'utf-8') as f:
+	with open('treenode_list.txt','a',encoding= 'utf-8') as f:
 		f.write(u_str+"\n")
 	html = getHtml(pre_str + u_str)
 	s = html.find('下一级微百科')
@@ -22,7 +22,7 @@ def dfs(u_str):
 		return
 
 	sublist = []   ## 得到了所有子概念名称的列表
-	for i in range(s,999999):
+	for i in range(s,999999999):
 		if html[i]=='<' and html[i+1]=='/' and html[i+2]=='a':
 			j = i
 			while html[j]!= '>':
@@ -37,7 +37,7 @@ def dfs(u_str):
 		if html[i]=='<' and html[i+1]=='/' and html[i+2]=='p' and html[i+3]=='>':
 			break
 	
-	with open('micropedia_tree1.txt','a',encoding= 'utf-8') as fm:
+	with open('micropedia_tree.txt','a',encoding= 'utf-8') as fm:
 		if sublist!=[]:
 			for item in sublist:
 				fm.write(u_str+" "+item+"\n")
@@ -45,6 +45,6 @@ def dfs(u_str):
 	for sub in sublist:
 		dfs(sub)
 	 
-dfs('学校')
+dfs('中国大学')
 	
 	

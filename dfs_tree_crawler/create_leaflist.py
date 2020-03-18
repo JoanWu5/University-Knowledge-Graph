@@ -9,7 +9,7 @@ def main():
 	neo = Neo4j()
 	neo.connectDB()
 	s = {}
-	with open('leaf_list1.txt','r',encoding='utf-8') as f:
+	with open('leaf_list.txt','r',encoding='utf-8') as f:
 		for line in f.readlines():
 			itemname = line.split(' ')[1].strip()
 			if neo.matchSchoolItembyTitle(itemname) != None:
@@ -17,7 +17,7 @@ def main():
 			if itemname in s:
 				continue;
 			s[itemname] = 1
-			with open('crawled_leaf_list1.txt','a',encoding='utf-8') as f:
+			with open('crawled_leaf_list.txt','a',encoding='utf-8') as f:
 				f.write(itemname+'\n')		
 			
 	

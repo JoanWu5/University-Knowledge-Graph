@@ -34,6 +34,6 @@ def trans(jsonpath, csvpath):
     json_file.close()
     csv_file.close()
 
-trans('school_pedia.json','school_pedia.csv')
+trans('school_pedia1.json','school_pedia1.csv')
 
 

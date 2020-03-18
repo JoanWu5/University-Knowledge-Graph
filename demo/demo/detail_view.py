@@ -44,9 +44,10 @@ def showdetail(request):
 			ctx['baseInfoValueList'].append(p)
 			
 		text = ""
-		List = answer['openTypeList'].split('##')
-		for p in List:
-			text += '<span class="badge bg-important">' + str(p) + '</span> '
+		if answer['openTypeList']:
+			List = answer['openTypeList'].split('##')
+			for p in List:
+				text += '<span class="badge bg-important">' + str(p) + '</span> '
 		ctx['openTypeList'] = text
 		
 		text = '<table class="table table-striped table-advance table-hover"> <tbody>'

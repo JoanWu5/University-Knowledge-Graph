@@ -13,7 +13,7 @@ def create_predict(SchoolItem_csv):
 	classifier.load_trainSet(data_set)     
 	classifier.set_parameter(weight=[1.0, 3.0, 0.2, 4.0, 0],k=9)
 	predict_List = readCSVbyColumn(SchoolItem_csv, 'title')
-	file_object = open('predict_labels.txt','a',encoding='utf-8')
+	file_object = open('predict_labels1.txt','a',encoding='utf-8')
 	
 	count = 0
 	vis = set()
@@ -30,5 +30,5 @@ def create_predict(SchoolItem_csv):
 		
 	file_object.close()
 	
-create_predict('school_pedia.csv')
+create_predict('school_pedia1.csv')
 	

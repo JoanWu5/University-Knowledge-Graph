@@ -15,15 +15,11 @@ class SchoolSpider(scrapy.Spider):
 	allowed_domains = ["http://www.baike.com"]    #声明地址域
 	
 #	file_object = open('merge_table3.txt','r').read()
-	file_object = open('crawled_leaf_list1.txt','r',encoding='utf-8').read()
+	file_object = open('crawled_leaf_list.txt','r',encoding='utf-8').read()
 	wordList = file_object.split()  # 获取词表
 	
 	start_urls = []
 	count = 0
-	
-#	start_urls.append('http://www.baike.com/wiki/小米%5B农作物%5D')
-#	start_urls.append('http://www.baike.com/wiki/苹果%5B果实%5D')
-#	start_urls.append('http://www.baike.com/wiki/李%5B蔷薇科李属植物%5D')
 	
   # 本处是用于构造原始json
 	for i in wordList:    ##生成url列表

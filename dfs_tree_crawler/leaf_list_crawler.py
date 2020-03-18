@@ -5,7 +5,7 @@ from urllib.parse import quote,unquote
 import re
 
 pre_str = 'http://fenlei.baike.com/'
-root_str = '学校'
+root_str = '清华大学'
 
 def getHtml(url):  
 	url = quote(url, safe='/:?=')  # url处理中文
@@ -19,6 +19,7 @@ def crawl_page(u_str):
 	print('entry: '+u_str)
 	url = pre_str + u_str + r'/list'
 	html = getHtml(url)
+	print(html)
 	s = html.find('link_blue line-25 zoom')
 	if s == -1:
 		return
@@ -52,11 +53,11 @@ def crawl_page(u_str):
 				break
 			sub2 += s
 			
-		with open('leaf_list1.txt','a',encoding='utf-8') as f:
+		with open('leaf_list.txt','a',encoding='utf-8') as f:
 			f.write(u_str+' '+sub2+"\n")
 	 
 #flag = 0
-with open('treenode1.txt','r',encoding='utf-8') as f:
+with open('treenode.txt','r',encoding='utf-8') as f:
 	for line in f.readlines():
 		crawl_page(line)
 	
