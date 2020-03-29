@@ -8,7 +8,7 @@ import os
 import json
 relationCountDict = {}
 filePath = os.path.abspath(os.path.join(os.getcwd(),"."))
-with open(filePath+"/toolkit/relationStaticResult.txt","r",encoding='utf8') as fr:
+with open(filePath+"/toolkit/StaticResult1.txt","r",encoding='utf8') as fr:
 	for line in fr:
 		relationNameCount = line.split(",")
 		relationName = relationNameCount[0][2:-1]
@@ -84,8 +84,7 @@ def search_relation(request):
 		#若输入entity1和entity2,则输出entity1和entity2之间的最短路径
 		if(len(entity1) !=0 and len(relation) == 0 and len(entity2)!=0):
 			searchResult = db.findRelationByEntities(entity1,entity2)
-			if(len(searchResult)>0):
-				print(searchResult)
+			if len(searchResult)>0:
 				searchResult = sortDict(searchResult)
 				return render(request,'relation.html',{'searchResult':json.dumps(searchResult,ensure_ascii=False)})
 		#若输入entity1,entity2和relation,则输出entity1、entity2是否具有相应的关系
