@@ -1,1 +1,0 @@
-entity1Pos	entity1	entity2Pos	entity2	statement	relation

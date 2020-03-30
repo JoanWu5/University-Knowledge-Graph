@@ -29,7 +29,7 @@ print('predicted labels load over!')
 wv_model = word_vector_model()
 wv_model.read_vec(filePath+'/toolkit/vector_15.txt') # 降到15维了	   
 
-# 读取农业层次树
+# 读取大学层次树
 tree = TREE()
 tree.read_edge(filePath+'/toolkit/micropedia_tree1.txt')
 tree.read_leaf(filePath+'/toolkit/leaf_list1.txt')
@@ -42,8 +42,8 @@ mongo = Mongo()
 mongo.makeConnection()
 print("mongodb connected")
 #连接数据库
-mongodb = mongo.getDatabase("agricultureKnowledgeGraph")
-print("connect to agricultureKnowledgeGraph")
+mongodb = mongo.getDatabase("SchoolKnowledgeGraph")
+print("connect to SchoolKnowledgeGraph")
 # 得到collection
 collection = mongo.getCollection("train_data")
 print("get connection train_data")

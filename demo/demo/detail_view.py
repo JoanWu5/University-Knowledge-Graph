@@ -34,14 +34,16 @@ def showdetail(request):
 		ctx['image'] = '<img src="' + str(image) + '" alt="该条目无图片" height="100%" width="100%" >'
 		
 		ctx['baseInfoKeyList'] = []
-		List = answer['baseInfoKeyList'].split('##')
-		for p in List:
-			ctx['baseInfoKeyList'].append(p)
+		if answer['baseInfoKeyList']:
+			List = answer['baseInfoKeyList'].split('##')
+			for p in List:
+				ctx['baseInfoKeyList'].append(p)
 			
 		ctx['baseInfoValueList'] = []
-		List = answer['baseInfoValueList'].split('##')
-		for p in List:
-			ctx['baseInfoValueList'].append(p)
+		if answer['baseInfoValueList']:
+			List = answer['baseInfoValueList'].split('##')
+			for p in List:
+				ctx['baseInfoValueList'].append(p)
 			
 		text = ""
 		if answer['openTypeList']:
@@ -51,31 +53,32 @@ def showdetail(request):
 		ctx['openTypeList'] = text
 		
 		text = '<table class="table table-striped table-advance table-hover"> <tbody>'
-		keyList = answer['baseInfoKeyList'].split('##')
-		valueList = answer['baseInfoValueList'].split('##')
-		i = 0
-		while i < len(keyList) :
-			value = " "
-			if i < len(valueList):
-				value = valueList[i]
-			text += "<tr>"
-			text += '<td><strong>' + keyList[i] + '</strong></td>'
-			text += '<td>' + value + '</td>'
-			i += 1
-			
-			if i < len(valueList):
-				value = valueList[i]
-			if i < len(keyList) :
+		if answer['baseInfoKeyList']:
+			keyList = answer['baseInfoKeyList'].split('##')
+			valueList = answer['baseInfoValueList'].split('##')
+			i = 0
+			while i < len(keyList) :
+				value = " "
+				if i < len(valueList):
+					value = valueList[i]
+				text += "<tr>"
 				text += '<td><strong>' + keyList[i] + '</strong></td>'
 				text += '<td>' + value + '</td>'
-			else :
-				text += '<td><strong>' + '</strong></td>'
-				text += '<td>' + '</td>'
-			i += 1
-			text += "</tr>"
-		text += " </tbody> </table>"
-		if answer['baseInfoKeyList'].strip() == '':
-			text = ''
+				i += 1
+				
+				if i < len(valueList):
+					value = valueList[i]
+				if i < len(keyList) :
+					text += '<td><strong>' + keyList[i] + '</strong></td>'
+					text += '<td>' + value + '</td>'
+				else :
+					text += '<td><strong>' + '</strong></td>'
+					text += '<td>' + '</td>'
+				i += 1
+				text += "</tr>"
+			text += " </tbody> </table>"
+			if answer['baseInfoKeyList'].strip() == '':
+				text = ''
 		ctx['baseInfoTable'] = text 
 		
 		tagcloud = ""
@@ -86,22 +89,22 @@ def showdetail(request):
 #			print(tag)
 		ctx['tagcloud'] = tagcloud
 		
-		agri_type = ""
+		school_type = ""
 		ansList = tree.get_path(answer['title'], True)
 		for List in ansList:
-			agri_type += '<p >'
+			school_type += '<p >'
 			flag = 1
 			for p in List:
 				if flag == 1:
 					flag = 0
 				else:
-					agri_type += ' / '
-				agri_type += str(p)
+					school_type += ' / '
+				school_type += str(p)
 				
-			agri_type += '</p>'	
+			school_type += '</p>'	
 		if len(ansList) == 0:
-			agri_type = '<p > 暂无高校类型</p>'
-		ctx['agri_type'] = agri_type	
+			school_type = '<p > 暂无高校类型</p>'
+		ctx['school_type'] = school_type	
 		
 		entity_type = ""
 		explain = get_explain(predict_labels[answer['title']])
@@ -115,28 +118,3 @@ def showdetail(request):
 			
 	return render(request, "detail.html", ctx)
 	
-#	
-## -*- coding: utf-8 -*-
-#from django.http import HttpResponse
-#from django.shortcuts import render_to_response
-#import thulac
-# 
-#import sys
-#sys.path.append("..")
-#from neo4jModel.models import Neo4j
-#
-#def search_detail(request):
-#	return render_to_response('detail.html')
-#
-## 接收GET请求数据
-#def showdetail(request):
-#	request.encoding = 'utf-8'
-#	if 'title' in request.GET:
-#		# 连接数据库
-#		db = Neo4j()
-#		db.connectDB()
-#		title = request.GET['title']
-#		answer = db.matchItembyTitle(title)
-#		message = answer['detail']
-#				
-#	return HttpResponse(message)

@@ -12,14 +12,14 @@ from toolkit.pre_load import pre_load_thu
 def tagging_push(request):
 	ctx = {}
 	# 先将已有的labels存入字典中
-	file_object = open('label_data/labels.txt','r')
+	file_object = open('label_data/labels1.txt','r',encoding='utf-8')
 	s = set()
 	for f in file_object:
 		pair = f.split()
 		s.add(pair[0].strip())
 	file_object.close()
 	
-	file_object = open('label_data/word_list.txt','r')
+	file_object = open('label_data/crawled_leaf_list1.txt.txt','r',encoding='utf-8')
 	all_list = []
 	for f in file_object:
 		all_list.append(f.strip())

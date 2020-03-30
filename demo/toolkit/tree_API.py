@@ -145,7 +145,7 @@ class TREE :
 		return self.UI_str
 		
 		
-# 读取农业层次树
+# 读取大学层次树
 #tree = TREE()
 #tree.read_edge('micropedia_tree.txt')
 #tree.read_leaf('leaf_list.txt')
