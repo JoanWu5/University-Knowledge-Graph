@@ -15,7 +15,7 @@ class SchoolSpider(scrapy.Spider):
 	allowed_domains = ["http://www.baike.com"]    #声明地址域
 	
 #	file_object = open('merge_table3.txt','r').read()
-	file_object = open('crawled_leaf_list.txt','r',encoding='utf-8').read()
+	file_object = open('all_entity_clean.txt','r',encoding='utf-8').read()
 	wordList = file_object.split()  # 获取词表
 	
 	start_urls = []

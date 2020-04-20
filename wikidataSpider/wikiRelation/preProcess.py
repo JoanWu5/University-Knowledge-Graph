@@ -2,17 +2,18 @@
 
 import json
 import codecs
-import time
 
-resultJsonFile = codecs.open('readytoCrawl.json','w',encoding = 'utf-8') ; 
-with open("entity.json","r",encoding='utf-8') as fr:
+
+resultJsonFile = open('readytoCrawl1.json','w',encoding = 'utf-8')
+with open("allentity.json","r",encoding='utf-8') as fr:
 	 for line in fr.readlines():
 	 	entity = json.loads(line)
 	 	for repository in entity['jsonItem']['search']:
-	 		if (repository['match']['language'] == 'zh' or repository['match']['language'] == 'en') and repository['match']['text'] == entity['entityOriginName'] :
+	 		if (repository['match']['language'] == 'zh' or repository['match']['language'] == 'en') and repository['match']['text'] == entity['entityOriginName'].strip() :
+	 			print(repository)
 	 			resultJson = dict()
 	 			resultJson['entity']  = repository
-	 			resultJson['entityOriginName']  = entity['entityOriginName']
+	 			resultJson['entityOriginName']  = entity['entityOriginName'].strip()
 	 			resultJson['jsonNumber'] = entity['jsonNumber']
 	 			resultJson = json.dumps(dict(resultJson),ensure_ascii=False) + '\n'
 	 			resultJsonFile.write(resultJson)

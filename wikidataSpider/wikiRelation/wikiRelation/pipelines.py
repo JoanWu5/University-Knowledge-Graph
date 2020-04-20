@@ -9,8 +9,8 @@ import copy
 
 class WikirelationPipeline(object):
 	def __init__(self):
-		self.file = open('entityRelation.json','w',encoding = 'utf-8')
-		self.file2 = open('entity1_entity2.json','w', encoding = 'utf-8')
+		self.file = open('new_entityRelation.json','w',encoding = 'utf-8')
+		self.file2 = open('new_entity1_entity2.json','w', encoding = 'utf-8')
 
 	def process_item(self, item, spider):
 		print(item)

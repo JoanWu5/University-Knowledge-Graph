@@ -146,10 +146,10 @@ class TREE :
 		
 		
 # 读取大学层次树
-#tree = TREE()
-#tree.read_edge('micropedia_tree.txt')
-#tree.read_leaf('leaf_list.txt')
-#print(tree.get_path('香蕉',True))
+# tree = TREE()
+# tree.read_edge('micropedia_tree1.txt')
+# tree.read_leaf('leaf_list1.txt')
+# print(tree.get_path('武汉大学',True))
 
 		
 		

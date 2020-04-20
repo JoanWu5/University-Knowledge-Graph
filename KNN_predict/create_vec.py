@@ -11,7 +11,7 @@ def create_predict(SchoolItem_csv):
 	db.connectDB()
 	
 	predict_List = readCSVbyColumn(SchoolItem_csv, 'title')
-	file_object = open('vector1.txt','a',encoding='utf-8')
+	file_object = open('new_vector.txt','a',encoding='utf-8')
 	
 	model = FastText('wiki.zh.bin')
 	
@@ -33,5 +33,5 @@ def create_predict(SchoolItem_csv):
 		
 	file_object.close()
 	
-create_predict('school_pedia1.csv')
+create_predict('new_school_pedia1.csv')
 	

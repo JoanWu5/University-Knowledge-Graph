@@ -31,42 +31,6 @@ def ER_post(request):
 			text += "<a href='detail.html?title=" + pair[0] + "'  data-original-title='" + get_explain(pair[1]) + "'  data-placement='top' data-trigger='hover' data-content='"+get_detail_explain(pair[1])+"' class='popovers'>" + pair[0] + "</a>"
 		
 		ctx['rlt'] = text
-			
-#		while i < length:
-#			# 尝试将2个词组合，若不是NE则组合一个，还不是就直接打印文本
-#			p1 = TagList[i][0]
-#			p2 = "*-"  # 保证p2没被赋值时，p1+p2必不存在
-#			if i+1 < length:
-#				p2 = TagList[i+1][0]
-#				
-#			t1 = TagList[i][1]
-#			t2 = "*-"
-#			if i+1 < length:
-#				t2 = TagList[i+1][1]
-#			
-#			p = p1 + p2
-#			if i+1 < length and preok(t1) and nowok(t2):
-#				answer = db.matchHudongItembyTitle(p)
-#				if answer != None:
-#					text += "<a href='detail.html?title=" + str(p) + "' data-toggle='tooltip' title='" + get_explain(t2) + "'>" + p + "</a>"
-#					i += 2
-#					continue
-#			
-#			p = p1
-#			if nowok(t1):
-#				answer = db.matchHudongItembyTitle(p)
-#				if answer != None:
-#					text += "<a href='detail.html?title=" + str(p) + "' data-toggle='tooltip' title='" + get_explain(t1) + "'>" + p + "</a>"
-#					i += 1
-#					continue
-#				elif temporaryok(t1):
-#					text += "<a href='#' data-toggle='tooltip' title='" + get_explain(t1) + "(暂无资料)'>" + p + "</a>"
-#					i += 1
-#					continue
-#					
-#					
-#			i += 1
-#			text += str(p)
 				
 		seg_word = ""
 		length = len(TagList)

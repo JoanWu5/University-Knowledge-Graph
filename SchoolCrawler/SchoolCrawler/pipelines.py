@@ -13,7 +13,7 @@ from scrapy.exceptions import DropItem
 class SchoolcrawlerPipeline(object):
     def __init__(self):
         self.count = 0
-        self.file = open('school_pedia1.json', 'w',encoding='utf-8')
+        self.file = open('new_school_pedia1.json', 'w',encoding='utf-8')
         self.start = time.time()
         
     def process_item(self, item, spider):

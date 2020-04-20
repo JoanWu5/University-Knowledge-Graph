@@ -161,6 +161,3 @@ def get_NE(text):
 		
 	return answerList
 		
-	
-# from toolkit.pre_load import pre_load_thu,neo_con
-# print(get_NE(pre_load_thu, neo_con, '北京大学清华大学计算机科学与技术系'))

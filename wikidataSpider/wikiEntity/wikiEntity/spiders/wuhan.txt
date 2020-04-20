@@ -1,0 +1,14 @@
+{"entity1": "杨弘远", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "张培刚", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "湖北省立医科大学", "relation": "part of", "entity2": "武汉大学"}
+{"entity1": "龚健雅", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "郭传杰", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "顾海良", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "朱九思", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "武汉水利电力学院", "relation": "subclass of", "entity2": "武汉大学"}
+{"entity1": "五老八中", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "武汉大学新闻与传播学院", "relation": "subclass of", "entity2": "武汉大学"}
+{"entity1": "图书情报知识", "relation": "publisher", "entity2": "武汉大学"}
+{"entity1": "潘垣", "relation": "educated at", "entity2": "武汉大学"}
+{"entity1": "WHU", "relation": "topic's main category", "entity2": "Category:武汉大学"}
+{"entity1": "武汉大学", "relation": "located in the administrative territorial entity", "entity2": "武汉市"}

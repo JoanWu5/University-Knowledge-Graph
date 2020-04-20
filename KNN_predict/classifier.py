@@ -149,7 +149,6 @@ class Classifier:
 			
 		return baseInfoValueList_simi	
 
-    #暂时不用
 	def similarity(self,item1,item2):  # 比较两个页面的相似度，返回[-1,1]之间的相似度
 		title_simi = self.model.similarity(item1.title,item2.title)
 		
@@ -187,11 +186,6 @@ class Classifier:
 		if len(and12)>0:
 			baseInfoValueList_simi /= len(and12)	
 			
-#		d1 = item1.detail[:60]   #只判断前60个字，降低复杂度
-#		d2 = item2.detail[:60]
-#		detail_simi = self.model.similarity(d1,d2)
-				
-		
 		# 各组相似度线性加权
 		simi = self.weight[0]*title_simi + self.weight[1]*openTypeList_simi + self.weight[2]*baseInfoKeyList_simi + self.weight[3]*baseInfoValueList_simi
 		
@@ -280,7 +274,7 @@ class Classifier:
 			t = p.title
 			curList.append(Node(s,l,t))
 		
-		curList.sort(key=lambda obj:obj.simi,reverse=True)  # 将训练集按照相对item的相似度进行排序
+		curList.sort(key=lambda obj:obj.simi,reverse=True)  # 将训练集按照相对item的相似度进行排序
 		
 		count = [0.,0.,0.,0.,0.,0.,0.,0.,0.,0.,0.]	
 		for i in range(self.k):

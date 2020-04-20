@@ -1,0 +1,36 @@
+本科	学位	subclass of     
+湖北省	武汉市	capital
+软件	学科	instance of
+等级	类	subclass of
+武汉市	湖北省	part of
+邮编	地址	part of
+英语	语言	instance of
+管理科学	学科	instance of
+数据	知识	different from
+外语	语言	subclass of
+工作日	英语	language of work or name
+学院	学校	subclass of
+技术	学科	instance of
+知识	数据	different from
+软件	数据	has part
+办法	技术	subclass of
+信息	知识	has effect
+博士	学位	subclass of
+硕士	学位	instance of
+论文	文章	subclass of
+校园	大学	part of
+方式	技术	said to be the same as
+张三	英语	language of work or name
+毕业生	英语	original language of film or TV show
+武汉大学	大学	instance of
+老师	专业	instance of
+技能	知识	subclass of
+武汉大学	武汉市	located in the administrative territorial entity
+官网	网站	subclass of
+经济学	学科	instance of
+程序	技术	subclass of
+刊物	文章	has part
+文章	出版物	subclass of
+bm	英语	official language
+科学	英语	language of work or name
+中国	湖北省	contains administrative territorial entity

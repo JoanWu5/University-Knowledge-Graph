@@ -13,14 +13,14 @@ class loadDatatoNeo4j(object):
 		count = 0
 		with open("new_node.csv",'w',encoding='utf-8') as fw:
 			fw.write("title,lable"+'\n')
-		with open("wikidata_relation.csv","w",encoding='utf-8') as fw:
+		with open("new_wikidata_relation.csv","w",encoding='utf-8') as fw:
 			fw.write("SchoolItem1,relation,SchoolItem2"+'\n')
-		with open("wikidata_relation2.csv","w",encoding='utf-8') as fw:
+		with open("new_wikidata_relation2.csv","w",encoding='utf-8') as fw:
 			fw.write("SchoolItem,relation,NewNode"+'\n')
-		with open("entityRelation_zh.json","r",encoding='utf-8') as fr:
+		with open("new_entityRelation_zh.json","r",encoding='utf-8') as fr:
 			with open("new_node.csv",'a',encoding='utf-8') as fwNewNode:
-				with open("wikidata_relation.csv",'a',encoding='utf-8') as fwWikidataRelation:
-					with open("wikidata_relation2.csv",'a',encoding='utf-8') as fwWikidataRelation2:
+				with open("new_wikidata_relation.csv",'a',encoding='utf-8') as fwWikidataRelation:
+					with open("new_wikidata_relation2.csv",'a',encoding='utf-8') as fwWikidataRelation2:
 						newNodeList = list()
 						for line in fr:
 							# print(line)

@@ -1,18 +1,26 @@
 relation_dict = {}
-with open('wikidata_relation2.csv','r',encoding='utf-8') as fr:
-	for line in fr:
-		entity_relation = line.split(',')
-		if( len(entity_relation) == 3):
-			relation = entity_relation[1] 
-			if relation in relation_dict.keys():
-				relation_dict[relation] = relation_dict.get(relation) + 1
-			else:
-				relation_dict[relation] = 0
+# with open('new_wikidata_relation.csv','r',encoding='utf-8') as fr:
+# 	for line in fr:
+# 		entity_relation = line.split(',')
+# 		if( len(entity_relation) == 3):
+# 			relation = entity_relation[1] 
+# 			if relation in relation_dict.keys():
+# 				relation_dict[relation] = relation_dict.get(relation) + 1
+# 			else:
+# 				relation_dict[relation] = 0
 
-	#对关系出现的次数进行排序
+with open('entityRelation.txt','r',encoding='utf-8') as fr:
+	for line in fr:
+		entity_relation = line.strip().split()
+		if len(entity_relation) >2:
+			relation = ' '.join(entity_relation[2:])
+			if relation in relation_dict.keys():
+				relation_dict[relation] +=1
+			else:
+				relation_dict[relation] = 1
 
 	#对字典按照value进行排序
 	relation_dict = sorted(relation_dict.items(),key = lambda item:item[1],reverse = True)
-	with open("staticResult1.txt",'w',encoding='utf-8') as fw:
+	with open("new_staticResult.txt",'w',encoding='utf-8') as fw:
 		for relation in relation_dict :
 			fw.write(str(relation)+'\n')

@@ -5,7 +5,7 @@ from urllib.parse import quote,unquote
 import re
 
 pre_str = 'http://fenlei.baike.com/'
-root_str = '清华大学'
+root_str = '武汉大学'
 
 def getHtml(url):  
 	url = quote(url, safe='/:?=')  # url处理中文

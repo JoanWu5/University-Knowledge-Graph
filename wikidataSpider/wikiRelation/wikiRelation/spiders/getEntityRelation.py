@@ -19,9 +19,9 @@ class entityRelationSpider(scrapy.spiders.Spider):
 		filePath = os.path.abspath(os.path.join(os.getcwd(),".."))
 		#获取已经爬取的数据(避免重复爬)
 		alreadyGet = []
-		if(os.path.exists(os.path.join(filePath,"entity1_entity2.json"))):
+		if(os.path.exists(os.path.join(filePath,"new_entity1_entity2.json"))):
 			#读取文件
-			with open(os.path.join(filePath,"entity1_entity2.json"),'r',encoding='utf-8') as fr:
+			with open(os.path.join(filePath,"new_entity1_entity2.json"),'r',encoding='utf-8') as fr:
 				for line in fr:
 					entityIds = json.loads(line)
 					alreadyGet.append(entityIds['entity1']+entityIds['relatedEntityId'])
@@ -32,7 +32,7 @@ class entityRelationSpider(scrapy.spiders.Spider):
 				relationName[relation] = relationJson['chrmention']
 
 		count = 0 
-		with open("readytoCrawl.json","r",encoding='utf-8') as fr:
+		with open("readytoCrawl1.json","r",encoding='utf-8') as fr:
 			for line in fr.readlines():
 				count += 1 
 				print(1.0*count/33355)
@@ -42,7 +42,7 @@ class entityRelationSpider(scrapy.spiders.Spider):
 				entity = scrapy.Request(link,callback=self.parseEntity)
 				entity.meta['entityName'] = entityName
 				entity.meta['link'] = link
-				entity.meta['alreadyGet'] = alreadyGet
+				# entity.meta['alreadyGet'] = alreadyGet
 				yield entity
 
 
@@ -50,7 +50,7 @@ class entityRelationSpider(scrapy.spiders.Spider):
 		print("=======================")
 
 		entity1 = response.meta['entityName']
-		alreadyGet = response.meta['alreadyGet']
+		# alreadyGet = response.meta['alreadyGet']
 		entityRelation = WikirelationItem()
 		headers = {
 			"user-agent" : "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36",
@@ -78,9 +78,9 @@ class entityRelationSpider(scrapy.spiders.Spider):
 							else:
 								relatedEntityId = entityId[0]
 								entityIdRelatedEntityId = entity1 + relatedEntityId
-								if entityIdRelatedEntityId in alreadyGet:
-									print(entityIdRelatedEntityId)
-									continue
+								# if entityIdRelatedEntityId in alreadyGet:
+								# 	print(entityIdRelatedEntityId)
+								# 	continue
 
 								httpRequest = requests.session()
 								httpRequest.mount('https://', HTTPAdapter(max_retries=30)) 

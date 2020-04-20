@@ -9,7 +9,7 @@ import json
 
 class WikientityPipeline(object):
     def __init__(self):
-        self.file = open('entity.json','w',encoding = 'utf-8')
+        self.file = open('all_entity_clean.json','w',encoding = 'utf-8')
 
     def process_item(self, item, spider):
         entityjson = json.dumps(dict(item),ensure_ascii=False) + '\n'

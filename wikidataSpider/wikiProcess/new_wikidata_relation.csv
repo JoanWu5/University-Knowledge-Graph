@@ -1,0 +1,63 @@
+SchoolItem1,relation,SchoolItem2
+本科,subclass of,学位
+湖北省,capital,武汉市
+结构,different from,结构
+软件,instance of,学科
+等级,subclass of,类
+武汉市,part of,湖北省
+能力,subclass of,能力
+邮编,part of,地址
+武汉市,capital of,湖北省
+武汉市,located in the administrative territorial entity,湖北省
+英语,instance of,语言
+等级,different from,类
+教育部,instance of,教育部
+管理科学,instance of,学科
+数据,different from,知识
+湖北省,replaces,湖北省
+外语,subclass of,语言
+湖北省,contains administrative territorial entity,武汉市
+类,subclass of,类
+工作日,language of work or name,英语
+武,family name identical to this given name,武
+学院,subclass of,学校
+技术,instance of,学科
+知识,different from,数据
+类,different from,类
+软件,has part,数据
+办法,subclass of,技术
+技术,studies,技术
+技术,uses,技术
+信息,has effect,知识
+类,different from,类
+语言,has part,语言
+博士,subclass of,学位
+中国,part of,中国
+信息,different from,知识
+语言,different from,语言
+中国,located on terrain feature,中国
+硕士,instance of,学位
+论文,subclass of,文章
+校园,part of,大学
+系,different from,系
+方式,said to be the same as,技术
+张三,language of work or name,英语
+毕业生,original language of film or TV show,英语
+武汉大学,instance of,大学
+老师,instance of,专业
+技能,subclass of,知识
+武汉大学,located in the administrative territorial entity,武汉市
+武汉大学,headquarters location,武汉市
+官网,subclass of,网站
+经济学,instance of,学科
+程序,subclass of,技术
+刊物,has part,文章
+文章,subclass of,出版物
+文章,part of,出版物
+bm,official language,英语
+科学,language of work or name,英语
+bm,language used,英语
+英语,uses capitalization for,语言
+国,different from,国
+中国,contains administrative territorial entity,湖北省
+中国,different from,中国
